@@ -20,8 +20,9 @@ It is a program written in Solidity. It has the main functionality of minting, t
         super._mint(msg.sender, amount);
     }
 
-    function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
-        _transfer(_msgSender(), recipient, amount);
+    function transfer(address to, uint256 amount) public override returns (bool) {
+        // transfer tokens and return bool
+        super.transfer(to, amount);
         return true;
     }
 
@@ -31,7 +32,7 @@ It is a program written in Solidity. It has the main functionality of minting, t
     }
 ```
 
-A modifier called OnlyOwner is created to ensure that for the mint() function, only the owner of a contract can mint new tokens and extend the total supply. So, it is a given that mint() creates new tokens and updates the balance of the owner of the contract. While, the transfer() function was simply taken from the parent contract ERC20, to provide the ability to transfer tokens between users. Finally, the burn() function burns tokens from a user, and reduces the total supply.
+A modifier called OnlyOwner is created to ensure that for the mint() function, only the owner of a contract can mint new tokens and extend the total supply. So, it is a given that mint() creates new tokens and updates the balance of the owner of the contract. While, the transfer() function was simply calls the function taken from the parent contract ERC20, to provide the ability to transfer tokens between users. Finally, the burn() function burns tokens from a user, and reduces the total supply.
 
 ## Authors
 

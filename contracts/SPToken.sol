@@ -24,6 +24,12 @@ contract SPToken is ERC20 {
         super._mint(msg.sender, amount);
     }
 
+    function transfer(address to, uint256 amount) public override returns (bool) {
+        // transfer tokens and return bool
+        super.transfer(to, amount);
+        return true;
+    }
+
     function burn(address from, uint256 amount) public {
         // burn tokens from
         super._burn(from, amount);
